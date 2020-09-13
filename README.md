@@ -1,3 +1,3 @@
 # GRESApp-IOS
 
-Aplicación GRESApp para iOS con expo SDK 37
+Aplicación GRESApp con modificaciones para iOS con expo SDK 37
