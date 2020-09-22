@@ -5,31 +5,33 @@ import { Container, Header,Left,Right,Content, Card,Text, CardItem, Body, Button
 import { Alert, Image, Platform, StyleSheet, TouchableHighlight, View,StatusBar} from 'react-native';
 
 import PropTypes from 'prop-types';
-
+//creo un array para controlar los items seleccionados
 class Selected_Items_Array {
   constructor() {
     selectedItemsArray = [];
   }
 
   pushItem(option) {
+    //agrega un item a los items seleccionados
     selectedItemsArray.push(option);
   }
 
   getArray() {
+    //me retorna los items seleccionados
     return selectedItemsArray;
   }
 }
 
 class Checkbox extends Component {
-
+  //construyo la clase checkbox, para generar los cuadros de checkeo
   constructor() {
 
     super();
 
     this.state = { checked: null }
   }
-  componentWillMount() {
-    
+  UNSAFE_componentWillMount() {
+    // carga los items que están checkeados
     if (this.props.checked) {
       this.setState({ checked: true }, () => {
         this.props.selectedArrayObject.pushItem({
@@ -44,7 +46,7 @@ class Checkbox extends Component {
     }
   }
   
-
+  //cambia el estado del checkbox dependiendo si se chequea o se deschequea
   toggleState(key, label, value) {
     this.setState({ checked: !this.state.checked }, () => {
       if (this.state.checked) {
@@ -102,7 +104,7 @@ export default class Alimentacion extends Component {
     checked:false}
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
 
@@ -121,7 +123,7 @@ export default class Alimentacion extends Component {
   
 
   getSelectedItems = () => {
-    
+    //evalua el mensaje a mostrar dependiendo de la cantidad de items que se hayan seleccionado
     if (selectedArrayOBJ.getArray().length == 0) {
 
       Alert.alert('Por favor responda las preguntas realizadas.');
@@ -177,7 +179,7 @@ export default class Alimentacion extends Component {
           <View style={styles.MainContainer}>
             <Card >  
               <CardItem>
-                <Image source={require('../../../../assets/comida.jpg')} style={{ resizeMode: 'cover', height:200}}  />
+                <Image source={require('../../../../assets/comida.jpg')} style={{ resizeMode: 'contain', height:200}}  />
               </CardItem>
               
             </Card>
@@ -451,7 +453,7 @@ const styles = StyleSheet.create(
     },
     textCenter:{
       width:'100%',
-      textAlign:'center',
+      textAlign:'justify',
       fontSize:17,
       fontFamily:'Quicksand-Regular',
       color: "#0A7FBA"

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { View } from "react-native";
 import * as Font from 'expo-font';
 import Constants from 'expo-constants'
-import {StyleSheet, Image,StatusBar} from 'react-native'
+import {StyleSheet, Image,StatusBar,SafeAreaView} from 'react-native'
 import { Container, Header,Left,Right,Content, Accordion,Card, CardItem, Text, Body, Button, Icon,Title} from 'native-base';
 const dataArray = [
   { title: "Lacteos", content: "Leche, yogurt, quesos, preferiblemente bajos en grasa. Se recomienda 2 a 3 porciones diarias. Son fuente escencial de proteína y calcio para mantener los musculos y huesos sanos" },
@@ -17,6 +17,7 @@ const dataArray = [
 ];
 
 class Grupos extends Component {
+  //se realiza una función de renderHeader y renderContent para ayudar al acordion a renderizarse
   _renderHeader(item, expanded) {
     return (
       <View style={{
@@ -66,7 +67,7 @@ class Grupos extends Component {
     
   }
   
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -108,13 +109,12 @@ class Grupos extends Component {
         </Button>
         </Right>
         </Header>
-        <Content padder>
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
-        <View style={styles.MainContainer}>
+        {/* El safearea permite evitar el warning de nasted virtualized list */}
+        <SafeAreaView style={{flex: 1}}>
         
         <Card > 
-          
-          <CardItem>
+          <CardItem style={{justifyContent:'center'}}>
             <Image source={require('../../../../assets/grupos.jpg')} style={{ resizeMode: 'cover', height:200}}  />
           </CardItem>
           
@@ -125,9 +125,8 @@ class Grupos extends Component {
           <Accordion dataArray={dataArray} expanded={0}
                      renderHeader={this._renderHeader}
                      renderContent={this._renderContent}/>
-        </View>
-        </Content>
         
+        </SafeAreaView>
       </Container>
     );
   }
@@ -137,7 +136,7 @@ const styles= StyleSheet.create({
   textCenter:{
     fontSize:17,
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA"
   },

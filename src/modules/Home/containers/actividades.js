@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { View } from "react-native";
 import * as Font from 'expo-font';
 import Constants from 'expo-constants'
+import {WebView} from 'react-native-webview'
 import {StyleSheet, Image,Platform,StatusBar} from 'react-native'
 import { Container, Header,Left,Right,Content,Card, CardItem, Text, Body, Button, Icon,Title} from 'native-base';
 import { Video } from 'expo-av';
@@ -10,8 +11,8 @@ class Actividades extends Component {
   constructor(props){
     super(props);
     this.state={
-      isReady:false,
-      fontLoaded:false,
+      isReady:false,//estado para saber si se cargó la fuente
+      fontLoaded:false, //define que la fuente no se ha cargado
       /**selected: "key1",
       selected3: undefined,
       selected2: undefined**/
@@ -19,12 +20,14 @@ class Actividades extends Component {
     
   }
   
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
+    //carga las fuentes
   }
   
 
   async loadFonts() {
+    //función para cargar las fuentes
     await Font.loadAsync({
 
       'Quicksand-SemiBold': require('../../../../assets/fonts/Quicksand-SemiBold.ttf'),
@@ -68,7 +71,7 @@ class Actividades extends Component {
         <Card > 
           
           <CardItem>
-            <Image source={require('../../../../assets/actividades1.jpg')} style={{ resizeMode: 'cover', height:200}}  />
+            <Image source={require('../../../../assets/actividades1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
           </CardItem>
           
         </Card>
@@ -81,15 +84,19 @@ class Actividades extends Component {
           
           
         </View>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/Recomendaciones.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri:"https://www.youtube.com/embed/pfUVVmTr2Y0"}}
+                            
+                            style={{height: 300}}
+                    />
+                  
+              </View>
         </Content>
         
       </Container>
@@ -100,7 +107,7 @@ class Actividades extends Component {
 const styles= StyleSheet.create({
   textCenter:{
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA"
   },

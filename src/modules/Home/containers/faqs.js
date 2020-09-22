@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {StyleSheet, View, ActivityIndicator, Platform,StatusBar} from 'react-native';
+import {StyleSheet, View, ActivityIndicator, Platform,StatusBar,SafeAreaView} from 'react-native';
 import * as Font from 'expo-font';
 import Constants from 'expo-constants'
 import { Container, Accordion,Header,Left,Right,Content, Text, Card, CardItem, Body, Button, Icon,Title} from 'native-base';
 
 class Faqs extends Component {
-  _isMounted = false;
+  _isMounted = false;//esta variable se usará para evitar el warning del componentDidMount que aparecía cuando se accedía a esta pantalla y se salia luego de la app
   _renderHeader(item, expanded) {
     return (
       <View style={{
@@ -65,8 +65,9 @@ class Faqs extends Component {
 
 
   getData(){
+    //obtiene constantemente cualquier pregunta que se agrege a la base de datos en la tabla de preguntas
     setTimeout(async()=>{
-
+      //el setTimeOut() es una función recurrente que se ejecuta cada determinado tiempo y actualiza las preguntas casi en tiempo real
       this.getData()
       return fetch('https://caeptudea.com.co/gresapp/faqs.php')
       .then((response) => response.json())
@@ -98,7 +99,7 @@ FlatListItemSeparator = () => {
     );
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   componentWillUnmount() {
@@ -152,9 +153,9 @@ FlatListItemSeparator = () => {
           </Button>
           </Right>
         </Header>
-        <Content>
+        
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
-        <View style={styles.MainContainer}>
+        <SafeAreaView style={{flex: 1}}>
         <Card>
           <CardItem bordered>
             <Text style={styles.textCenter}>A continuación encontrará las preguntas más frecuentes, estas son respondidas por expertos en el área de rehabilitación y constantemente actualizadas con el fin de tener la mejor información a la mano</Text>
@@ -173,8 +174,8 @@ FlatListItemSeparator = () => {
             />
           
         
-          </View>
-        </Content>
+          
+        </SafeAreaView>
 
       </Container>
 
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
 
   textCenter:{
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     color: "#0A7FBA",
     fontFamily:"Quicksand-Regular",
     fontSize:17

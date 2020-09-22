@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, Text, View, ActivityIndicator, Platform,StatusBar} from 'react-native';
+import { StyleSheet, FlatList, Text, View, ActivityIndicator, Platform,StatusBar,SafeAreaView} from 'react-native';
 import * as Font from 'expo-font';
 import Constants from 'expo-constants'
-import { Video } from 'expo-av';
+import {WebView} from 'react-native-webview'
 import { Container, Header,Left,Right,Content, Card, CardItem, Body, Button, Icon,Title} from 'native-base';
 class Testimonios extends Component {
   _isMounted = false;
@@ -23,7 +23,7 @@ class Testimonios extends Component {
   getData(){
   setTimeout(async()=>{
     this.getData()
-    return fetch('https://caeptudea.com.co/gresapp/testimonios_ios.php')
+    return fetch('https://caeptudea.com.co/gresapp/testimonios.php')
     .then((response) => response.json())
     .then((responseJson) => {
       if(this._isMounted){
@@ -55,7 +55,7 @@ FlatListItemSeparator = () => {
     );
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   componentWillUnmount() {
@@ -101,25 +101,27 @@ FlatListItemSeparator = () => {
           </Button>
           </Right>
         </Header>
-        <Content>
+        
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
-        <View style={styles.MainContainer}>
+        <SafeAreaView style={{flex: 1}}>
   
             <FlatList
             
               data={ this.state.dataSource }
 
               renderItem={({item}) =>
+              //creo una función para renderizar todo los testimonios junto con los datos que los acompaña
+              //en este caso basta con agregar la URL del archivo de video en formato H264(importante esto) y se agregará igual que con las preguntas frecuentes
               <View style={{  marginBottom:10, marginTop:10,overflow: 'hidden'}}>
-                  <Video
-                    source={{ uri: item.link }}
-                    rate={1.0}
-                    volume={1.0}
-                    isMuted={false}
-                    resizeMode="contain"
-                    useNativeControls={true}
-                    style={{ width: '100%', height: 300 }}
-                  />
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri: item.link }}
+                            style={{height: 300}}
+                    />
                   <Card>
                     <CardItem header bordered>
                         <Text style={styles.FlatListItemStyle} >{item.nombre} </Text>    
@@ -140,8 +142,8 @@ FlatListItemSeparator = () => {
               />
 
 
-          </View>
-        </Content>
+          </SafeAreaView>
+        
 
       </Container>
 

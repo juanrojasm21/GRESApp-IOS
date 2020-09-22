@@ -41,7 +41,7 @@ const HomeNavigator=createStackNavigator({
 })
 
 
-
+//creo el initialRouteName con el valor de loading para que sea esta pantalla quien escoga hacia donde ir, si no está logeado irá a Login, en caso contrario irá a inicio
 
 const SwitchNavigator=createSwitchNavigator({
 

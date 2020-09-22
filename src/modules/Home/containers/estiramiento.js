@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { View } from "react-native";
 import * as Font from 'expo-font';
 import Constants from 'expo-constants'
-import { Video } from 'expo-av';
+import {WebView} from 'react-native-webview'
 import {StyleSheet,Platform,StatusBar} from 'react-native'
 import { Container, Header,Left,Right,Content, Body, Button,Title, Card, CardItem, Text} from 'native-base';
 
@@ -17,7 +17,7 @@ class Estiramiento extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -61,15 +61,18 @@ class Estiramiento extends Component {
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         <View style={styles.MainContainer}>
         </View>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/Estiramiento.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{  marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri: "https://www.youtube.com/embed/DYeZPl6aeJo" }}
+                            style={{height: 300}}
+                    />
+                  
+              </View>
         <Card>
           <CardItem  bordered>
             <Text style={styles.textCenter}>Estos ejercicios son una excelente guía, además de ser los recomendados por el equipo de rehabilitación de GresApp</Text>
@@ -94,7 +97,7 @@ const styles= StyleSheet.create({
   textCenter:{
     fontSize:17,
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA"
   },

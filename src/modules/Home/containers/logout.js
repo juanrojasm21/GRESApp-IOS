@@ -8,7 +8,8 @@ class logout extends Component {
     super(props);
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
+    //se remueve el userLogin del asyncStorage de tal manera que el loading carge la pantalla de login
     AsyncStorage.removeItem('userLogin')
     this.props.navigation.navigate('Loading')
   }

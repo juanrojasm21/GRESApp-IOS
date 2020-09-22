@@ -17,7 +17,7 @@ class Equilibrio extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -61,15 +61,18 @@ class Equilibrio extends Component {
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         <View style={styles.MainContainer}>
         </View>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/Equilibrio.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{  marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri: "https://www.youtube.com/embed/0WIzUdZIpWY" }}
+                            style={{height: 300}}
+                    />
+                  
+              </View>
         <Card>
           <CardItem  bordered>
             <Text style={styles.textCenter}>Estos ejercicios son una excelente guía, además de ser los recomendados por el equipo de rehabilitación de GresApp</Text>
@@ -92,7 +95,7 @@ const styles= StyleSheet.create({
   textCenter:{
     fontSize:17,
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA"
   },

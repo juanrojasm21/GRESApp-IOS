@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import { Video } from 'expo-av';
 import Constants from 'expo-constants'
 import {StyleSheet, Image,Platform,StatusBar} from 'react-native'
+import {WebView} from 'react-native-webview'
 import { Container, Header,Left,Right,Content,Card, CardItem, Text, Body, Button, Icon,Title} from 'native-base';
 
 
@@ -18,7 +19,7 @@ class Dolor extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -68,7 +69,7 @@ class Dolor extends Component {
         <Card> 
           
           <CardItem>
-            <Image source={require('../../../../assets/dolor1.jpg')} style={{ resizeMode: 'cover', height:200}}  />
+            <Image source={require('../../../../assets/dolor1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
           </CardItem>
           
         </Card>
@@ -81,15 +82,19 @@ class Dolor extends Component {
           
           
         </View>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/dolor.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri:"https://www.youtube.com/embed/CiI00UYSFZg"}}
+                            
+                            style={{height: 300}}
+                    />
+                  
+              </View>
         </Content>
         
       </Container>
@@ -100,7 +105,7 @@ class Dolor extends Component {
 const styles= StyleSheet.create({
   textCenter:{
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA",
     fontSize:17

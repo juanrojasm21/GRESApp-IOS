@@ -3,7 +3,7 @@ import { View, } from "react-native";
 import * as Font from 'expo-font';
 import {StyleSheet,KeyboardAvoidingView,Alert, ScrollView,StatusBar} from 'react-native'
 import { Container, Content, Card, CardItem, Text, Body, Button,Item,Label,Input, Icon,Picker} from 'native-base';
-
+//Esta pantalla también usa la API para enviar los datos a la BD
 import api from '../../../utils/api'
 class Registro extends Component {
   state = {sex: ''}
@@ -21,10 +21,10 @@ class Registro extends Component {
       password:true,
       user:'',
       pass:'',
-      sexo:'',
+      sexo:'hombre',
       edad:'',
       ocupacion:'',
-      tipo_amp:''
+      tipo_amp:'en muslo'
     };
   }
   _changeIcon(){
@@ -45,7 +45,7 @@ class Registro extends Component {
     
   }
   
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   

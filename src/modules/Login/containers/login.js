@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import {StyleSheet, Image, AsyncStorage,StatusBar} from 'react-native'
 import { Container, Content, Card, CardItem, Text, Body, Button,Item,Input} from 'native-base';
 import api from '../../../utils/api';
-
+//El login se maneja desde la API
 
 export default class Login extends Component {
   
@@ -19,11 +19,13 @@ export default class Login extends Component {
     
   }
     Navegar=async(params) => {
+      //paso los parametros de navegación
+      //luego evaluo si los datos ingresados estan correctos o no existen en la BD
       if (params=="Loading"){
         let valLog=await api.valLog(this.state.username,this.state.pass)
         if(valLog.status==1){
           let userLogin={
-            sex:valLog.sex,
+            sex:valLog.sex,//obtengo el sexo del usuario de tal manera que se abra un mensaje personalizado si es hombre o es mujer
             user:this.state.username,
             perm:true,// permisos es uno cuando se logea el usuario
             //voy a utilizar asyncStorage para que se pueda pasar el usuario a las otras pantallas
@@ -44,7 +46,7 @@ export default class Login extends Component {
   
   
 
-  componentWillMount(){
+    UNSAFE_componentWillMount(){
     
     this.loadFonts();
   }

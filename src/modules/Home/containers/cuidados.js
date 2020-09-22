@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { View } from "react-native";
 import * as Font from 'expo-font';
 import Constants from 'expo-constants'
-import { Video } from 'expo-av';
-import {StyleSheet, Image,Platform,StatusBar,WebView} from 'react-native'
+import {WebView} from 'react-native-webview'
+import {StyleSheet, Image,Platform,StatusBar} from 'react-native'
 import { Container, Header,Left,Right,Content,Card, CardItem, Text, Body, Button, Icon,Title} from 'native-base';
 
 class Cuidados extends Component {
@@ -17,7 +17,7 @@ class Cuidados extends Component {
     
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -67,7 +67,7 @@ class Cuidados extends Component {
         <Card > 
           
           <CardItem>
-            <Image source={require('../../../../assets/care.jpg')} style={{ resizeMode: 'cover', height:200}}  />
+            <Image source={require('../../../../assets/care.jpg')} style={{ resizeMode: 'contain', height:200}}  />
           </CardItem>
           
         </Card>
@@ -81,25 +81,33 @@ class Cuidados extends Component {
           
           
         </View>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/vendaje.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri:"https://www.youtube.com/embed/UDjKs7epSI0"}}
+                            
+                            style={{height: 300}}
+                    />
+                  
+              </View>
         <Text style={styles.textCenter}>2) Cuidados del muñón</Text>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/cuidados.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+          <WebView
+                      style={ {opacity: 0.99} }
+                      startInLoadingState={true} 
+                      javaScriptEnabled={true}
+                      domStorageEnabled={true}
+                      useWebKit={true}
+                      source={{uri:"https://www.youtube.com/embed/SMJaYSpakoI"}}
+                      
+                      style={{height: 300}}
+              />
+            
+        </View>
         </Content>
         
       </Container>
@@ -111,7 +119,7 @@ const styles= StyleSheet.create({
   textCenter:{
     fontSize:17,
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA"
   },

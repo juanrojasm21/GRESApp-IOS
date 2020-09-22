@@ -15,7 +15,7 @@ class Ejercicios extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -430,7 +430,7 @@ const styles= StyleSheet.create({
   textCenter:{
     width:'100%',
     fontSize:17,
-    textAlign:'center',
+    textAlign:'justify',
     color: "#0A7FBA",
     fontFamily:'Quicksand-Regular'
   },

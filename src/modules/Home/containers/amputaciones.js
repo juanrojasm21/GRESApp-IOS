@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import Constants from 'expo-constants'
 import { Video } from 'expo-av';
 import {StyleSheet, Image,Platform,StatusBar} from 'react-native'
+import {WebView} from 'react-native-webview'
 import { Container, Header,Left,Right,Content,Card, CardItem, Text, Body, Button, Icon,Title} from 'native-base';
 
 
@@ -18,7 +19,7 @@ class Amputaciones extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -79,15 +80,19 @@ class Amputaciones extends Component {
           
           
         </View>
-        <Video
-            source={{ uri: 'https://caeptudea.com.co/gresapp/amputacion1.mp4' }}
-            rate={1.0}
-            volume={1.0}
-            isMuted={false}
-            resizeMode="contain"
-            useNativeControls={true}
-            style={{ width: '100%', height: 300 }}
-          />
+        <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
+                <WebView
+                            style={ {opacity: 0.99} }
+                            startInLoadingState={true} 
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
+                            useWebKit={true}
+                            source={{uri:"https://www.youtube.com/embed/g9rq3OurwVU"}}
+                            
+                            style={{height: 300}}
+                    />
+                  
+              </View>
         </Content>
         
       </Container>
@@ -98,7 +103,7 @@ class Amputaciones extends Component {
 const styles= StyleSheet.create({
   textCenter:{
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA",
     fontSize:17

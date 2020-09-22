@@ -16,7 +16,7 @@ class Aerobicos extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -60,7 +60,7 @@ class Aerobicos extends Component {
         <Content padder>
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         <View style={styles.MainContainer}>
-        <Image source={require('../../../../assets/aerobicos1.jpg')} style={{ resizeMode: 'cover', height:500,width:"100%"}}  />
+        <Image source={require('../../../../assets/aerobicos1.jpg')} style={{ resizeMode: 'contain', height:500,width:"100%"}}  />
         </View>
         
         <Card>
@@ -84,7 +84,7 @@ const styles= StyleSheet.create({
   textCenter:{
     fontSize:17,
     width:'100%',
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-Regular',
     color: "#0A7FBA"
   },

@@ -17,7 +17,7 @@ class Contactenos extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -71,6 +71,7 @@ class Contactenos extends Component {
                  <Text style={styles.textCenterText}>Tenemos un correo electrónico siempre disponible para que te contactes con nosotros en caso de tener alguna duda referente a la rehabilitación de una amputación, sólo haz click en el siguiente enlace y escríbenos.</Text>
             </CardItem>
           </Card>
+          {/* Se despliega una ventana de email para contactarse*/}
           <Button onPress= {()=>{
             Linking.openURL("mailto:contactanosgresapp@gmail.com");
           }} block danger style={styles.boton}>
@@ -95,7 +96,7 @@ const styles= StyleSheet.create({
   },
   textCenterText:{
     
-    textAlign:'center',
+    textAlign:'justify',
     fontFamily:'Quicksand-SemiBold',
     color: "#0A7FBA",
     fontSize:17

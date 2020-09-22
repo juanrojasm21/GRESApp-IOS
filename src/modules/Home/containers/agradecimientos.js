@@ -17,7 +17,7 @@ class Agredecimientos extends Component {
     };
     
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
   }
   
@@ -69,6 +69,9 @@ class Agredecimientos extends Component {
             </CardItem>
             <CardItem bordered>
                  <Text style={styles.textCenterText}>Financiada por Fortalecimiento de programas y proyectos en ciencias médicas y de la salud con talento joven e impacto regional del Ministerios de Ciencia, Tecnología e Innovación (Minciencias), bajo el contrato RC752-2018, administrado por la CAEPT ( Corporación Académica para el Estudio de Patologías Tropicales). Agradecemos a la Corporación Mahavir Kmina por los diferentes contenidos brindados para la aplicación .</Text>
+            </CardItem>
+            <CardItem bordered>
+                <Image source={require('../../../../assets/gres.png')} style={styles.logo} />
             </CardItem>
             <CardItem bordered>
                 <Image source={require('../../../../assets/minciencias.png')} style={styles.logo} />

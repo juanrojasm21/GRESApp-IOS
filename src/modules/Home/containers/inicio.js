@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import * as Font from 'expo-font';
 import * as Linking from 'expo-linking';
-import {StyleSheet, KeyboardAvoidingView,AsyncStorage,View,StatusBar} from 'react-native'
+import {StyleSheet, KeyboardAvoidingView,AsyncStorage,View,StatusBar,Image} from 'react-native'
 import { Container, Header,Left,Right, Content, Card, CardItem, Text, Body, Button, Icon,Title} from 'native-base';
 import {createDrawerNavigator} from 'react-navigation-drawer'
 import Amputaciones from './amputaciones'
@@ -37,26 +37,27 @@ class Inicio extends Component {
     
     this.state={
       username:'', // recibo los parámetros pero el permiso lo recibo en cero
-      perm:false,
-      isReady:false,
+      perm:false, //controlo el permiso que me define si el usuario está logeado o no, para saber qué screen cargar
+      isReady:false,//controla si se cargaron las fuentes
       fontLoaded:false,
-      miToken:'',
-      sex:0
+      miToken:'',//guarda el token para las notificaciones
+      sex:0//almacena el tipo de sexo para desplegar el saludo en la pantalla inicial, identifica si es hombre o mujer en la BD
     };
     
   }
   
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.loadFonts();
-    
+    //carga las fuentes
     
     
   }
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     this.listener && this.listener.remove();
     
   }
   _handleOpenWithLinking = () => {
+    //despliega las referencias en una ventana de navegación
     Linking.openURL('http://gpc.minsalud.gov.co/gpc_sites/Repositorio/Conv_637/GPC_amputacion/GPC_Amputados_padres_cuidadores.pdf');
   };
 
@@ -79,6 +80,7 @@ class Inicio extends Component {
   }
   
   async loadFonts() {
+    //carga las fuentes a usar
     await Font.loadAsync({
       'Quicksand-SemiBold': require('../../../../assets/fonts/Quicksand-SemiBold.ttf'),
       'Quicksand-Regular': require('../../../../assets/fonts/Quicksand-Regular.ttf'),
@@ -119,6 +121,7 @@ class Inicio extends Component {
         
           
           <Text style={styles.textCenterHeader}>¡Hola {this.state.username}!</Text>
+          <Image source={require('../../../../assets/amoramistad.png')} style={{ resizeMode: 'contain', height:150}}  />
           <Card>
             <CardItem bordered>
                 {this.state.sex==1 ? (
@@ -135,8 +138,7 @@ class Inicio extends Component {
                                             Explora el contenido que tenemos para ti, haciendo
                                             click en nuestro menú.
             </Text>
-          </Card>
-                                         
+          </Card>                     
           <KeyboardAvoidingView behavior='padding' enabled>
           </KeyboardAvoidingView>
           <Button onPress= {()=>this.props.navigation.openDrawer()} block danger style={styles.boton1}>
@@ -152,6 +154,7 @@ class Inicio extends Component {
     );
   }
 }
+//Navigator para navegar entre las pantallas de ejercicios
 const ExcerNavigator=createStackNavigator({
 
   Ejercicios:{
@@ -202,6 +205,8 @@ const ExcerNavigator=createStackNavigator({
   {
     initialRouteName: 'Ejercicios',
   })
+
+//Navigator principal para las secciones de la aplicacion
 const drawerNavigator=createDrawerNavigator({
     Inicio,
     Amputaciones:{
@@ -286,21 +291,17 @@ const styles= StyleSheet.create({
     fontSize:17,
     color: "#0A7FBA",
     fontFamily:'Quicksand-Regular',
-    flexDirection: "row",
-    padding: 20,
-    paddingRight: 1,
-    paddingLeft:10,
-    justifyContent: "center",
-    alignItems: "center" ,
+    //flexDirection: "row",
+    padding: 5,
+    textAlign:'justify',
+    //justifyContent: "center",
+    //alignItems: "center" ,
   },
   textCenterHeader:{
     fontSize:28,
     color: "#0A7FBA",
     fontFamily:'Quicksand-SemiBold',
-    padding: 20,
-    paddingRight: 1,
-    justifyContent: "flex-start",
-    alignItems: "center" ,
+    textAlign:'justify',
   },
   textCenterTiny:{
     fontSize:13,
