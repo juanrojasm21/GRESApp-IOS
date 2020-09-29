@@ -23,7 +23,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.caeptudea.gresapp",
+      "bundleIdentifier": "com.caeptudea.gresappudea",
       "supportsTablet": true
     },
     "android": {

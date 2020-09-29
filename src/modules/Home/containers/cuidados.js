@@ -63,24 +63,14 @@ class Cuidados extends Component {
         <Content padder>
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         <View style={styles.MainContainer}>
-        
+        <Image source={require('../../../../assets/care.jpg')} style={{ resizeMode: 'contain', height:200}}  />
         <Card > 
-          
-          <CardItem>
-            <Image source={require('../../../../assets/care.jpg')} style={{ resizeMode: 'contain', height:200}}  />
-          </CardItem>
-          
-        </Card>
           <CardItem bordered >
-            <Text style={styles.textCenter}>En este apartado encontrará la información necesaria para el cuidado del muñón.</Text>
+            <Text style={styles.textCenterNormal}>En este apartado encontrará la información necesaria para el cuidado del muñón.</Text>
           </CardItem>
-          <CardItem>
-          <Text style={styles.textCenter}>1) Vendaje del muñón</Text>
-          
-          </CardItem>
-          
-          
+        </Card>
         </View>
+        <Text style={styles.textCenter}>Vendaje del muñón</Text>
         <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
                 <WebView
                             style={ {opacity: 0.99} }
@@ -94,7 +84,7 @@ class Cuidados extends Component {
                     />
                   
               </View>
-        <Text style={styles.textCenter}>2) Cuidados del muñón</Text>
+        <Text style={styles.textCenter}>Cuidados del muñón</Text>
         <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
           <WebView
                       style={ {opacity: 0.99} }
@@ -117,6 +107,13 @@ class Cuidados extends Component {
 
 const styles= StyleSheet.create({
   textCenter:{
+    fontSize:17,
+    width:'100%',
+    textAlign:'center',
+    fontFamily:'Quicksand-SemiBold',
+    color: "#0A7FBA"
+  },
+  textCenterNormal:{
     fontSize:17,
     width:'100%',
     textAlign:'justify',

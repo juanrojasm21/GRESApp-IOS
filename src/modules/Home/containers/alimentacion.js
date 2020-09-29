@@ -177,13 +177,7 @@ export default class Alimentacion extends Component {
         <Content>
           <StatusBar translucent={true} backgroundColor="#2ca0c2" />
           <View style={styles.MainContainer}>
-            <Card >  
-              <CardItem>
-                <Image source={require('../../../../assets/comida.jpg')} style={{ resizeMode: 'contain', height:200}}  />
-              </CardItem>
-              
-            </Card>
-
+          <Image source={require('../../../../assets/comida.jpg')} style={{ resizeMode: 'contain', height:200}}  />
             <Card>
               <CardItem bordered >
                 <Text style={styles.textCenter}>Responda conscientemente las siguientes preguntas para evaluar sus hábitos alimenticios</Text>

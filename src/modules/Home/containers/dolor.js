@@ -65,22 +65,16 @@ class Dolor extends Component {
         <Content padder>
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         <View style={styles.MainContainer}>
-        
+        <Image source={require('../../../../assets/dolor1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
         <Card> 
           
           <CardItem>
-            <Image source={require('../../../../assets/dolor1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
+          <Text style={styles.textCenter}>En el siguiente video encontrarás toda la información que necesitas acerca de los dolores
+                                        generados en la etapa postoperatoria, además de lo que realmente significa la sensación de miembro fantasma,
+                                        todo de la mano de expertos en el área de rehabilitación.</Text>
           </CardItem>
           
         </Card>
-        <CardItem bordered>
-        <Text style={styles.textCenter}>En el siguiente video encontrarás toda la información que necesitas acerca de los dolores
-                                        generados en la etapa postoperatoria, además de lo que realmente significa la sensación de miembro fantasma,
-                                        todo de la mano de expertos en el área de rehabilitación.</Text>
-        
-        </CardItem>
-          
-          
         </View>
         <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
                 <WebView

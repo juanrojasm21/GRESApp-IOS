@@ -68,20 +68,17 @@ class Actividades extends Component {
         <Content padder>
         <View style={styles.MainContainer}>
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
+        <Image source={require('../../../../assets/actividades1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
         <Card > 
           
-          <CardItem>
-            <Image source={require('../../../../assets/actividades1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
-          </CardItem>
-          
-        </Card>
           <CardItem>
           <Text style={styles.textCenter}>Es importante tener en cuenta que luego de la amputación puedes progresivamente retomar las actividades de la vida diaria.
                                             Es por eso que en este apartado se darán una serie de recomendaciones que están al alcance de todos para conseguir este objetivo.
                                             Sige paso a paso los consejos dados en el siguiente video.</Text>
-          
+            
           </CardItem>
           
+        </Card>
           
         </View>
         <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>

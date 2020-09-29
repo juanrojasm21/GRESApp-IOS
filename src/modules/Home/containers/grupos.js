@@ -112,19 +112,17 @@ class Grupos extends Component {
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         {/* El safearea permite evitar el warning de nasted virtualized list */}
         <SafeAreaView style={{flex: 1}}>
-        
+        <Image source={require('../../../../assets/grupos.jpg')} style={{ resizeMode: 'contain', height:200}}  />
         <Card > 
           <CardItem style={{justifyContent:'center'}}>
-            <Image source={require('../../../../assets/grupos.jpg')} style={{ resizeMode: 'cover', height:200}}  />
+          <Text style={styles.textCenter}>A continuación encontrará los grupos, las opciones de alimentos, numero de porciones recomendas, así como principales nutrientes y sus funciones</Text>
           </CardItem>
           
         </Card>
-          <CardItem bordered >
-            <Text style={styles.textCenter}>A continuación encontrará los grupos, las opciones de alimentos, numero de porciones recomendas, así como principales nutrientes y sus funciones</Text>
-          </CardItem>
-          <Accordion dataArray={dataArray} expanded={0}
+        <Accordion dataArray={dataArray} expanded={0}
                      renderHeader={this._renderHeader}
                      renderContent={this._renderContent}/>
+          
         
         </SafeAreaView>
       </Container>

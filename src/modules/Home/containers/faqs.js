@@ -160,9 +160,6 @@ FlatListItemSeparator = () => {
           <CardItem bordered>
             <Text style={styles.textCenter}>A continuación encontrará las preguntas más frecuentes, estas son respondidas por expertos en el área de rehabilitación y constantemente actualizadas con el fin de tener la mejor información a la mano</Text>
           </CardItem>
-          <CardItem>
-            
-          </CardItem>
         </Card> 
           
           <Accordion

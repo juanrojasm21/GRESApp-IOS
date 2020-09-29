@@ -65,20 +65,14 @@ class Amputaciones extends Component {
         <Content padder>
         <StatusBar translucent={true} backgroundColor="#2ca0c2" />
         <View style={styles.MainContainer}>
-        
+        <Image source={require('../../../../assets/amputacion1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
         <Card bordered> 
           
           <CardItem bordered>
-            <Image source={require('../../../../assets/amputacion1.jpg')} style={{ resizeMode: 'contain', height:200}}  />
+          <Text style={styles.textCenter}>Conoce la información que requieres saber de una amputación, acompañado por un experto en el siguiente video.</Text>
           </CardItem>
           
         </Card>
-          <CardItem bordered>
-          <Text style={styles.textCenter}>Conoce la información que requieres saber de una amputación, acompañado por un experto en el siguiente video.</Text>
-          
-          </CardItem>
-          
-          
         </View>
         <View style={{ marginBottom:10, marginTop:10,overflow: 'hidden'}}>
                 <WebView
